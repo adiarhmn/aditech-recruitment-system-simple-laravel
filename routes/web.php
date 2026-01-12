@@ -26,6 +26,7 @@ Route::prefix('admin')->group(function () {
 
     // JOB POSTING ROUTE - ADMIN
     Route::prefix('jobs')->group(function () {
-        Route::get('/', [ShowJobPostingController::class, 'showJobPosting'])->name('jobs');
+        Route::get('/', [ShowJobPostingController::class, 'index'])->name('jobs');
+        Route::get('/{id}', [ShowJobPostingController::class, 'show'])->name('jobs.show');
     });
 });
