@@ -13,8 +13,7 @@ class ShowJobPostingController extends Controller
      */
     public function index()
     {
-        $jobPostings = JobPosting::paginate(10);
-      
+        $jobPostings = JobPosting::paginate(5);
         return view('features::job-posting.pages.admin-job-list', compact('jobPostings'));
     }
 

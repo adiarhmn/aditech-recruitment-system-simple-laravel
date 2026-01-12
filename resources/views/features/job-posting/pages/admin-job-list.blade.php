@@ -63,7 +63,7 @@
             @endforelse
 
             <x-slot:pagination>
-                {{ $jobPostings->links() }}
+                {{ $jobPostings->links('vendor.pagination.aditech') }}
             </x-slot:pagination>
         </x-ui.table>
     </div>
