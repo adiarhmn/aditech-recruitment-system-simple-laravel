@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login | ADITECH Recruitment</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="font-sans antialiased text-slate-800 bg-slate-50">
 
     <div class="min-h-screen flex flex-col md:flex-row">
-        
+
         <!-- Left Side: Visual/Branding -->
         <div class="hidden md:flex md:w-1/2 bg-blue-800 relative items-center justify-center p-12 overflow-hidden">
             <!-- Background Decoration -->
             <div class="absolute inset-0 opacity-10">
-                <img src="{{ asset('assets/images/coding-troubleshooting.jpg') }}" alt="Background" class="object-cover w-full h-full">
+                <img src="{{ asset('assets/images/coding-troubleshooting.jpg') }}" alt="Background"
+                    class="object-cover w-full h-full">
             </div>
-            
+
             <div class="relative z-10 max-w-md text-center">
                 <a href="/" class="inline-flex items-center gap-3 mb-12">
                     <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
@@ -29,7 +32,7 @@
                     Log in to access your recruitment dashboard and manage your applications with ease.
                 </p>
             </div>
-            
+
             <!-- Floating Circles -->
             <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-700 rounded-full opacity-50"></div>
             <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-900 rounded-full opacity-50"></div>
@@ -51,39 +54,13 @@
                     <p class="text-slate-500">Please enter your credentials to continue.</p>
                 </div>
 
-                <form action="#" method="POST" class="space-y-6">
-                    @csrf
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
-                        <input type="email" id="email" name="email" required 
-                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition"
-                            placeholder="name@company.com">
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between mb-1">
-                            <label for="password" class="block text-sm font-medium text-slate-700">Password</label>
-                            <a href="#" class="text-xs font-semibold text-blue-800 hover:text-blue-900 transition">Forgot Password?</a>
-                        </div>
-                        <input type="password" id="password" name="password" required 
-                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-blue-800 outline-none transition"
-                            placeholder="••••••••">
-                    </div>
-
-                    <div class="flex items-center">
-                        <input type="checkbox" id="remember" name="remember" class="w-4 h-4 text-blue-800 border-slate-300 rounded focus:ring-blue-800">
-                        <label for="remember" class="ml-2 block text-sm text-slate-600 font-medium">Remember me for 30 days</label>
-                    </div>
-
-                    <button type="submit" class="w-full py-3.5 bg-blue-800 hover:bg-blue-900 text-white font-bold rounded-lg shadow-sm hover:shadow-md transition">
-                        Sign In
-                    </button>
-                </form>
+                <x-auth::login-form />
 
                 <div class="mt-8 pt-8 border-t border-slate-100 text-center">
                     <p class="text-sm text-slate-500">
-                        Don't have an account? 
-                        <a href="{{ route('register') }}" class="font-bold text-blue-800 hover:text-blue-900 transition">Register</a>
+                        Don't have an account?
+                        <a href="{{ route('register') }}"
+                            class="font-bold text-blue-800 hover:text-blue-900 transition">Register</a>
                     </p>
                 </div>
 
@@ -97,4 +74,5 @@
     </div>
 
 </body>
+
 </html>

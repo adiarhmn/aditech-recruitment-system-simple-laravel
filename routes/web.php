@@ -1,20 +1,24 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
+// PUBLIC ROUTE
 Route::get('/', function () {
-    return view('welcome');
+    return view('public.landing-page');
 });
 
-// Placeholder routes for the landing page
-Route::get('/login', function () {
-    return view('pages.auth.login');
-})->name('login');
 
-Route::get('/register', function () {
-    return view('pages.auth.register');
-})->name('register');
+// AUTH ROUTE
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
 
-Route::get('/dashboard', function () {
-    return "Dashboard (Placeholder)";
-})->middleware(['auth'])->name('dashboard');
+
+
+// ADMIN ROUTE
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('pages.dashboard.admin-dashboard');
+    })->name('dashboard');
+});
