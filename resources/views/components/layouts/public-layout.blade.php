@@ -9,7 +9,9 @@
 </head>
 
 <body class="font-sans antialiased text-slate-800 bg-white">
+    <x-layouts.top-navigation.public-top-navigation />
     {{ $slot }}
+    <x-layouts.footers.public-footer />
 </body>
 
 </html>

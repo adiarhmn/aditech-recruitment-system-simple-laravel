@@ -10,6 +10,6 @@ class RegisterController extends Controller
 {
     public function showRegisterForm(): View
     {
-        return view('auth.pages.register');
+        return view('auth::pages.register');
     }
 }

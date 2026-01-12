@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -44,5 +46,37 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the job postings created by the user (admin).
+     */
+    public function jobPostings(): HasMany
+    {
+        return $this->hasMany(JobPosting::class, 'created_by');
+    }
+
+    /**
+     * Get the applications submitted by the user (candidate).
+     */
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Application::class, 'candidate_id');
+    }
+
+    /**
+     * Check if the user is an admin.
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if the user is a candidate.
+     */
+    public function isCandidate(): bool
+    {
+        return $this->role === 'candidate';
     }
 }
