@@ -1,59 +1,134 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ADITECH Recruitment System
+
+![ADITECH Banner](https://img.shields.io/badge/ADITECH-Recruitment_System-1e40af?style=for-the-badge&logo=laravel&logoColor=white)
+
+<div align="center">
+
+[![Laravel 12](https://img.shields.io/badge/Laravel-12.0-FF2D20?style=flat-square&logo=laravel&logoColor=white)](https://laravel.com)
+[![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![PHP 8.2+](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=flat-square&logo=php&logoColor=white)](https://php.net)
+[![Vite](https://img.shields.io/badge/Vite-7.0-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
+
+**A professional, corporate-grade Applicant Tracking System (ATS) designed for ADITECH.**
+*Streamlining the hiring lifecycle with elegance, security, and efficiency.*
+
+</div>
+
+---
+
+## 📖 Project Overview
+
+The **ADITECH Recruitment System** is a modern web platform built to transform how ADITECH manages talent acquisition. By replacing fragmented manual processes with a centralized, automated workflow, the system enhances the experience for both HR administrators and job candidates.
+
+Built on **Laravel 12** and **Tailwind CSS 4**, the application prioritizes performance, security, and a premium user interface. The design strictly adheres to ADITECH's corporate identity—featuring the signature **Blue-800** palette, **Poppins** typography, and a clean, minimalist aesthetic that conveys trust and professionalism.
+
+## ✨ Key Features
+
+### 🏢 For HR Administrators
+*   **Command Center Dashboard**: Real-time overview of active jobs, applicant stats, and upcoming interviews.
+*   **Job Management**: Create, edit, and publish job postings with rich details and requirements.
+*   **Applicant Tracking**: A structured pipeline to move candidates from `Applied` → `Shortlisted` → `Interview` → `Hired`.
+*   **CV Review**: Integrated PDF viewer and download capability for candidate resumes.
+
+### 👩‍💻 For Candidates
+*   **Public Career Portal**: A responsive, branded landing page to browse open positions.
+*   **Seamless Application**: Easy-to-use form with profile creation and secure CV upload.
+*   **Application History**: Track the status of submitted applications in real-time.
+
+## 🛠️ Tech Stack
+
+This project is architected for scalability and maintainability:
+
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Framework** | **Laravel 12** | Robust backend logic, routing, and security. |
+| **Styling** | **Tailwind CSS 4** | Utility-first CSS for a custom, responsive design. |
+| **Frontend** | **Blade + Vite** | High-performance asset bundling and templating. |
+| **Database** | **MySQL** | Reliable relational data storage. |
+| **Icons** | **Lucide Icons** | Consistent, crisp SVG iconography. |
+| **Testing** | **Pest PHP** | Elegant testing framework for stability. |
+
+## 🎨 Design & Architecture
+
+### Corporate Identity
+*   **Primary Color**: `#1e40af` (Tailwind `blue-800`) - Used for primary actions, navigation, and branding.
+*   **Typography**: **Poppins** (Sans-serif) - Ensures modern readability across all devices.
+*   **Visuals**: High-quality corporate imagery and generous whitespace (`py-24`) for a premium feel.
+
+### Clean Architecture
+The project adopts a **feature-based directory structure** in `resources/views/features` to improve maintainability:
+*   `features/public`: Landing pages and job listings.
+*   `features/auth`: Login and Registration flows.
+*   `features/dashboard`: Admin management interfaces.
+
+## 🚀 Installation Guide
+
+Follow these steps to set up the project locally:
+
+### Prerequisites
+*   PHP 8.2 or higher
+*   Composer
+*   Node.js & NPM
+
+### Setup Steps
+
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/aditech/recruitment-system.git
+    cd recruitment-system
+    ```
+
+2.  **Install Backend Dependencies**
+    ```bash
+    composer setup
+    ```
+    *This custom script installs dependencies, copies `.env`, generates the app key, and runs migrations.*
+
+3.  **Install Frontend Dependencies**
+    ```bash
+    npm install
+    npm run build
+    ```
+
+4.  **Start Development Server**
+    ```bash
+    composer dev
+    ```
+    *Starts Laravel server, Queue worker, and Vite hot-reload server simultaneously.*
+
+5.  **Access the Application**
+    *   **Landing Page**: `http://localhost:8000`
+    *   **Admin Dashboard**: `http://localhost:8000/admin/dashboard`
+
+## 📂 Folder Structure Highlights
+
+```text
+app/
+├── Http/Controllers/   # Application logic
+├── Models/             # Eloquent models (User, JobPosting, Application)
+resources/
+├── css/                # Tailwind configuration & fonts
+├── views/
+│   ├── components/     # Reusable UI elements (Buttons, Cards)
+│   └── features/       # Feature-scoped views
+│       ├── auth/       # Login/Register templates
+│       ├── dashboard/  # Admin interfaces
+│       └── public/     # Candidate-facing pages
+routes/
+└── web.php             # Route definitions
+```
+
+## 🤝 Contribution
+
+We welcome contributions to improve the ADITECH Recruitment System!
+1.  Fork the repository.
+2.  Create a feature branch (`git checkout -b feature/amazing-feature`).
+3.  Commit your changes (`git commit -m 'Add amazing feature'`).
+4.  Push to the branch (`git push origin feature/amazing-feature`).
+5.  Open a Pull Request.
+
+---
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <small>© 2026 ADITECH. Built with precision and passion.</small>
 </p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
