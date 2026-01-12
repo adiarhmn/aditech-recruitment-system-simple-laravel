@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         // Custom components
         Blade::anonymousComponentPath(base_path('resources/views/features/public/components'), 'public');
         Blade::anonymousComponentPath(base_path('resources/views/features/auth/components'), 'auth');
+        Blade::anonymousComponentPath(base_path('resources/views/features'), 'feature');
 
         // Custom namespaces
         View::addNamespace('public', base_path('resources/views/features/public'));

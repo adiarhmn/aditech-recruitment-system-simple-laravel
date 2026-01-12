@@ -17,6 +17,9 @@
     </main>
 
     @stack('scripts')
+    <script>
+        
+    </script>
 </body>
 
 </html>
