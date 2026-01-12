@@ -12,7 +12,7 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/register', function () {
-    return "Register Page (Placeholder)";
+    return view('pages.auth.register');
 })->name('register');
 
 Route::get('/dashboard', function () {
