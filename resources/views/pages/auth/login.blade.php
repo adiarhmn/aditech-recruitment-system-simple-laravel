@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="mb-10">
-                    <h1 class="text-2xl font-bold text-slate-900 mb-2">Employee Login</h1>
+                    <h1 class="text-2xl font-bold text-slate-900 mb-2">Login to your account</h1>
                     <p class="text-slate-500">Please enter your credentials to continue.</p>
                 </div>
 
@@ -83,7 +83,7 @@
                 <div class="mt-8 pt-8 border-t border-slate-100 text-center">
                     <p class="text-sm text-slate-500">
                         Don't have an account? 
-                        <a href="{{ route('register') }}" class="font-bold text-blue-800 hover:text-blue-900 transition">Apply Now</a>
+                        <a href="{{ route('register') }}" class="font-bold text-blue-800 hover:text-blue-900 transition">Register</a>
                     </p>
                 </div>
 
