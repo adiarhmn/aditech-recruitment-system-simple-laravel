@@ -25,62 +25,68 @@
              class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-slate-200 focus:outline-none transition ease-out duration-100 transform origin-top-right">
              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-             <div class="border-t border-gray-100"></div>
-             <form method="POST" action="{{ route('logout') }}">
-                 @csrf
-                 <button type="submit"
-                     class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</button>
-             </form>
+              <div class="border-t border-gray-100"></div>
+              <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                  @csrf
+                  <button type="submit" id="logout-btn"
+                      class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-600 transition">Sign out</button>
+              </form>
          </div>
      </div>
  </div>
 
 
- @pushOnce('scripts')
-     <script>
-         document.addEventListener('DOMContentLoaded', function() {
-             const dropdownBtn = document.getElementById('profile-dropdown-btn');
-             const dropdownMenu = document.getElementById('profile-dropdown-menu');
-             const chevron = document.getElementById('profile-chevron');
-             const container = document.getElementById('profile-dropdown-container');
+  @pushOnce('scripts')
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              const dropdownBtn = document.getElementById('profile-dropdown-btn');
+              const dropdownMenu = document.getElementById('profile-dropdown-menu');
+              const chevron = document.getElementById('profile-chevron');
+              const container = document.getElementById('profile-dropdown-container');
+              const logoutBtn = document.getElementById('logout-btn');
+              const logoutForm = document.getElementById('logout-form');
 
-             function toggleDropdown() {
-                 const isHidden = dropdownMenu.classList.contains('hidden');
+              function toggleDropdown() {
+                  const isHidden = dropdownMenu.classList.contains('hidden');
 
-                 if (isHidden) {
-                     // Open
-                     dropdownMenu.classList.remove('hidden');
-                     dropdownMenu.classList.add('opacity-100', 'scale-100');
-                     dropdownMenu.classList.remove('opacity-0', 'scale-95');
-                     chevron.classList.add('rotate-180');
-                 } else {
-                     // Close
-                     dropdownMenu.classList.add('hidden');
-                     dropdownMenu.classList.remove('opacity-100', 'scale-100');
-                     dropdownMenu.classList.add('opacity-0', 'scale-95');
-                     chevron.classList.remove('rotate-180');
-                 }
-             }
+                  if (isHidden) {
+                      dropdownMenu.classList.remove('hidden');
+                      dropdownMenu.classList.add('opacity-100', 'scale-100');
+                      dropdownMenu.classList.remove('opacity-0', 'scale-95');
+                      chevron.classList.add('rotate-180');
+                  } else {
+                      dropdownMenu.classList.add('hidden');
+                      dropdownMenu.classList.remove('opacity-100', 'scale-100');
+                      dropdownMenu.classList.add('opacity-0', 'scale-95');
+                      chevron.classList.remove('rotate-180');
+                  }
+              }
 
-             // Toggle on click
-             dropdownBtn.addEventListener('click', function(e) {
-                 e.stopPropagation();
-                 toggleDropdown();
-             });
+              dropdownBtn.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  toggleDropdown();
+              });
 
-             // Close when clicking outside
-             document.addEventListener('click', function(e) {
-                 if (!container.contains(e.target) && !dropdownMenu.classList.contains('hidden')) {
-                     toggleDropdown();
-                 }
-             });
+              logoutBtn.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  e.stopPropagation();
 
-             // Close on escape key
-             document.addEventListener('keydown', function(e) {
-                 if (e.key === 'Escape' && !dropdownMenu.classList.contains('hidden')) {
-                     toggleDropdown();
-                 }
-             });
-         });
-     </script>
- @endPushOnce
+                  if (confirm('Are you sure you want to sign out?')) {
+                      logoutForm.submit();
+                  }
+              });
+
+              document.addEventListener('click', function(e) {
+                  if (!container.contains(e.target) && !dropdownMenu.classList.contains('hidden')) {
+                      toggleDropdown();
+                  }
+              });
+
+              document.addEventListener('keydown', function(e) {
+                  if (e.key === 'Escape' && !dropdownMenu.classList.contains('hidden')) {
+                      toggleDropdown();
+                  }
+              });
+          });
+      </script>
+  @endPushOnce
