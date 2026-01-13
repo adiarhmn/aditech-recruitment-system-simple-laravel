@@ -51,6 +51,10 @@
                     <p class="text-slate-500">Enter your details to register as a candidate.</p>
                 </div>
 
+                @if(session('error'))
+                    <x-notification type="error" :message="session('error')" />
+                @endif
+
               <x-auth::register-form />
                 <div class="mt-8 pt-8 border-t border-slate-200 text-center">
                     <p class="text-sm text-slate-500">
