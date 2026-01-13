@@ -24,6 +24,6 @@ Homestead.yaml
 Thumbs.db
 
 # COMMENT THIS WHILE PUSH GIT
-/doc
-AGENTS.md 
-GEMINI.md
+# /doc
+# AGENTS.md 
+# GEMINI.md

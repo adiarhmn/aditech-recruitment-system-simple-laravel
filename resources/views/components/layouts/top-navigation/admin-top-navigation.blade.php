@@ -14,7 +14,7 @@
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-1">
                     <x-top-navigations.menu-item route="dashboard" label="Dashboard" />
-                    <x-top-navigations.menu-item route="jobs" label="Jobs" />
+                    <x-top-navigations.menu-item route="admin.jobs.index" label="Jobs" />
 
                     <a href="#"
                         class="px-3 py-2 rounded-md text-sm font-medium text-blue-100 hover:text-white hover:bg-blue-800 transition">

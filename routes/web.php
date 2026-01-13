@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\JobPosting\CreateJobPostingController;
 use App\Http\Controllers\JobPosting\ShowJobPostingController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,9 @@ Route::prefix('admin')->group(function () {
 
     // JOB POSTING ROUTE - ADMIN
     Route::prefix('jobs')->group(function () {
-        Route::get('/', [ShowJobPostingController::class, 'index'])->name('jobs');
-        Route::get('/{id}', [ShowJobPostingController::class, 'show'])->name('jobs.show');
+        Route::get('/', [ShowJobPostingController::class, 'index'])->name('admin.jobs.index');
+        Route::get('/create', [CreateJobPostingController::class, 'create'])->name('admin.jobs.create');
+        Route::post('/', [CreateJobPostingController::class, 'store'])->name('admin.jobs.store');
+        Route::get('/{id}', [ShowJobPostingController::class, 'show'])->name('admin.jobs.show');
     });
 });
