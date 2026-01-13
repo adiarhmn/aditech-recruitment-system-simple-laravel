@@ -54,6 +54,10 @@
                     <p class="text-slate-500">Please enter your credentials to continue.</p>
                 </div>
 
+                @if(session('error'))
+                    <x-notification type="error" :message="session('error')" />
+                @endif
+
                 <x-auth::login-form />
 
                 <div class="mt-8 pt-8 border-t border-slate-100 text-center">
