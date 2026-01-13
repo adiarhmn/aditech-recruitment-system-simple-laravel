@@ -28,7 +28,10 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('dashboard'))->with('success', 'Welcome back, ' . Auth::user()->name . '!');
+            $user = Auth::user();
+            $message = 'Welcome back, ' . $user->name . '!';
+
+            return redirect()->intended(route('dashboard'))->with('success', $message);
         }
 
         throw ValidationException::withMessages([
