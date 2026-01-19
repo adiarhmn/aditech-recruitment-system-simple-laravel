@@ -11,14 +11,16 @@
                  </a>
              </div>
              <div class="hidden md:flex md:items-center md:gap-8">
-                 <a href="#about" class="text-sm font-medium text-slate-600 hover:text-blue-800 transition">About
+                 <a href="{{ route('public.landing-page').'#about' }}" class="text-sm font-medium text-slate-600 hover:text-blue-800 transition">About
                      Us</a>
-                 <a href="#requirements"
+                 <a href="{{ route('public.landing-page').'#requirements' }}"
                      class="text-sm font-medium text-slate-600 hover:text-blue-800 transition">Requirements</a>
-                 <a href="#timeline"
+                 <a href="{{ route('public.landing-page').'#timeline' }}"
                      class="text-sm font-medium text-slate-600 hover:text-blue-800 transition">Timeline</a>
                  @if (Route::has('login'))
                      @auth
+                         <a href="{{ route('candidate.jobs.index') }}"
+                             class="text-sm font-medium text-slate-600 hover:text-blue-800 transition">Jobs</a>
                          <a href="{{ url('/dashboard') }}"
                              class="text-sm font-medium text-blue-800 hover:text-blue-900 transition">Dashboard</a>
                      @else

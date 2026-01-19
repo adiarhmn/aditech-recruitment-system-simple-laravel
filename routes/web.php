@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 // PUBLIC ROUTE
 Route::get('/', function () {
     return view('public::landing-page');
-});
+})->name('public.landing-page');
 
 
 // AUTH ROUTE
@@ -22,10 +22,22 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 
+// CANDIDATE ROUTE
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'candidateDashboard'])->name('candidate.dashboard');
+    
+    // JOB POSTING ROUTE - CANDIDATE
+    Route::prefix('jobs')->group(function () {
+        Route::get('/', [ShowJobPostingController::class, 'candidateIndex'])->name('candidate.jobs.index');
+        Route::get('/{id}', [ShowJobPostingController::class, 'candidateShow'])->name('candidate.jobs.show');
+    });
+});
+
+
 // ADMIN ROUTE
 Route::prefix('admin')->group(function () {
     // DASHBOARD ROUTE - ADMIN
-    Route::get('/dashboard', [DashboardController::class, 'adminDashboard'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
 
     // JOB POSTING ROUTE - ADMIN
     Route::prefix('jobs')->group(function () {

@@ -26,6 +26,12 @@ class User extends Authenticatable
     ];
 
     /**
+     * The possible roles for a user.
+     */
+    public const ROLE_ADMIN = 'admin';
+    public const ROLE_CANDIDATE = 'candidate';
+
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var list<string>

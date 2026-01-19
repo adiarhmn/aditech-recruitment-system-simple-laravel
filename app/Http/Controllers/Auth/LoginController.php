@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -30,8 +31,15 @@ class LoginController extends Controller
 
             $user = Auth::user();
             $message = 'Welcome back, ' . $user->name . '!';
-
-            return redirect()->intended(route('dashboard'))->with('success', $message);
+            if (Auth::user()->role === User::ROLE_ADMIN) {
+                return redirect()->intended(route('admin.dashboard'))->with('success', $message);
+            } else if (Auth::user()->role === User::ROLE_CANDIDATE) {
+                return redirect()->intended(route('candidate.dashboard'))->with('success', $message);
+            } else {
+                // Return to the dashboard or any other appropriate route
+                dd('Role not found');
+                // return redirect()->intended(route('dashboard'))->with('success', $message);
+            }
         }
 
         throw ValidationException::withMessages([

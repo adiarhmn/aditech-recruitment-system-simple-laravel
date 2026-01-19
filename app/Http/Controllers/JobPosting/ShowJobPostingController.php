@@ -26,4 +26,22 @@ class ShowJobPostingController extends Controller
             'id' => $id
         ]);
     }
+
+    /**
+     * Display a listing of the job postings for candidates.
+     */
+    public function candidateIndex()
+    {
+        $jobPostings = JobPosting::where('status', 'published')->paginate(9);
+        return view('features::job-posting.pages.candidate-job-list', compact('jobPostings'));
+    }
+
+    /**
+     * Display the specified job posting for candidates.
+     */
+    public function candidateShow($id)
+    {
+        $jobPosting = JobPosting::where('status', 'published')->findOrFail($id);
+        return view('features::job-posting.pages.candidate-show-job', compact('jobPosting'));
+    }
 }
