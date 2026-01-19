@@ -28,7 +28,7 @@ class CreateJobPostingController extends Controller
             'status' => 'required|in:draft,published,closed',
         ]);
 
-        $validated['created_by'] = Auth::user()->id();
+        $validated['created_by'] = Auth::user()->id;
 
         if ($validated['status'] === 'published') {
             $validated['published_at'] = now();

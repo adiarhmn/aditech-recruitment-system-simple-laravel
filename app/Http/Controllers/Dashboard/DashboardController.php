@@ -10,6 +10,11 @@ class DashboardController extends Controller
 {
     public function adminDashboard(): View
     {
-        return view('features::dashboard.admin-dashboard');
+        return view('features::dashboard.pages.admin-dashboard');
+    }
+
+    public function candidateDashboard(): View
+    {
+        return view('features::dashboard.pages.candidate-dashboard');
     }
 }
