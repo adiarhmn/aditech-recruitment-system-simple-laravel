@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="shrink-0">
-                        <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-800 hover:bg-blue-900 text-white font-medium rounded-lg shadow-lg shadow-blue-800/30 transition transform hover:-translate-y-0.5">
+                        <a href="{{ route('candidate.jobs.apply', $jobPosting->id) }}" class="inline-flex items-center px-6 py-3 bg-blue-800 hover:bg-blue-900 text-white font-medium rounded-lg shadow-lg shadow-blue-800/30 transition transform hover:-translate-y-0.5">
                             Apply for this Job
                         </a>
                     </div>

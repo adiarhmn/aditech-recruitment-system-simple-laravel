@@ -21,8 +21,7 @@
                      @auth
                          <a href="{{ route('candidate.jobs.index') }}"
                              class="text-sm font-medium text-slate-600 hover:text-blue-800 transition">Jobs</a>
-                         <a href="{{ url('/dashboard') }}"
-                             class="text-sm font-medium text-blue-800 hover:text-blue-900 transition">Dashboard</a>
+                         <x-profile-dropdown />
                      @else
                          <a href="{{ route('login') }}"
                              class="text-sm font-medium text-slate-600 hover:text-blue-800 transition">Log in</a>

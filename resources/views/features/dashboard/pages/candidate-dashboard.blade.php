@@ -151,9 +151,9 @@
                             <div class="bg-blue-800 h-2 rounded-full" style="width: 85%"></div>
                         </div>
                     </div>
-                    <button class="w-full mt-6 px-4 py-2 border border-slate-200 hover:border-blue-800 text-slate-600 hover:text-blue-800 font-medium rounded-lg transition text-sm">
+                    <a href="{{ route('candidate.profile.edit') }}" class="block w-full text-center mt-6 px-4 py-2 border border-slate-200 hover:border-blue-800 text-slate-600 hover:text-blue-800 font-medium rounded-lg transition text-sm">
                         Edit Profile
-                    </button>
+                    </a>
                 </div>
 
                 <!-- Upcoming Interviews Mini -->
