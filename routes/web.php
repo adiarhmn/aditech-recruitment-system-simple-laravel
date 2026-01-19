@@ -30,7 +30,15 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('jobs')->group(function () {
         Route::get('/', [ShowJobPostingController::class, 'candidateIndex'])->name('candidate.jobs.index');
         Route::get('/{id}', [ShowJobPostingController::class, 'candidateShow'])->name('candidate.jobs.show');
+        
+        // APPLICATION ROUTES
+        Route::get('/{id}/apply', [\App\Http\Controllers\Application\CandidateApplicationController::class, 'create'])->name('candidate.jobs.apply');
+        Route::post('/{id}/apply', [\App\Http\Controllers\Application\CandidateApplicationController::class, 'store'])->name('candidate.jobs.apply.store');
     });
+
+    // PROFILE ROUTES
+    Route::get('/profile', [\App\Http\Controllers\Profile\ProfileController::class, 'edit'])->name('candidate.profile.edit');
+    Route::patch('/profile', [\App\Http\Controllers\Profile\ProfileController::class, 'update'])->name('candidate.profile.update');
 });
 
 

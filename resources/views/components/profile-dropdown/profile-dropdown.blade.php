@@ -1,19 +1,12 @@
- <!-- User Profile -->
+<!-- User Profile -->
  <div class="flex items-center gap-4">
-     <button class="text-blue-200 hover:text-white transition">
-         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
-             </path>
-         </svg>
-     </button>
      <div class="relative" id="profile-dropdown-container">
-         <button id="profile-dropdown-btn" class="flex items-center gap-2 text-sm text-white focus:outline-none">
-             <div class="w-8 h-8 rounded-full bg-blue-700 flex items-center justify-center border border-blue-600">
-                 <span class="font-bold">AD</span>
+         <button id="profile-dropdown-btn" class="flex items-center gap-2 text-sm focus:outline-none">
+             <div class="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center border border-blue-700 text-white">
+                 <span class="font-bold text-xs">{{ strtoupper(substr(Auth::user()->name, 0, 2)) }}</span>
              </div>
-             <span class="hidden md:block font-medium">Admin User</span>
-             <svg id="profile-chevron" class="w-4 h-4 text-blue-300 transition-transform duration-200" fill="none"
+             <span class="hidden md:block font-medium text-slate-700">{{ Auth::user()->name }}</span>
+             <svg id="profile-chevron" class="w-4 h-4 text-slate-400 transition-transform duration-200" fill="none"
                  stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                  </path>
@@ -23,13 +16,25 @@
          <!-- Dropdown Menu -->
          <div id="profile-dropdown-menu"
              class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-slate-200 focus:outline-none transition ease-out duration-100 transform origin-top-right">
-             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
-             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-              <div class="border-t border-gray-100"></div>
+             <div class="px-4 py-2 border-b border-slate-100">
+                 <p class="text-sm font-bold text-slate-900 truncate">{{ Auth::user()->name }}</p>
+                 <p class="text-xs text-slate-500 truncate">{{ Auth::user()->email }}</p>
+             </div>
+             
+             @if(Auth::user()->isCandidate())
+                <a href="{{ route('candidate.dashboard') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Dashboard</a>
+                <a href="{{ route('candidate.profile.edit') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Settings</a>
+             @else
+                <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Admin Dashboard</a>
+             @endif
+
+              <div class="border-t border-slate-100"></div>
               <form method="POST" action="{{ route('logout') }}" id="logout-form">
                   @csrf
                   <button type="submit" id="logout-btn"
-                      class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-600 transition">Sign out</button>
+                      class="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-red-600 transition font-medium">
+                      Sign out
+                  </button>
               </form>
          </div>
      </div>
@@ -46,18 +51,16 @@
               const logoutBtn = document.getElementById('logout-btn');
               const logoutForm = document.getElementById('logout-form');
 
+              if (!dropdownBtn || !dropdownMenu) return;
+
               function toggleDropdown() {
                   const isHidden = dropdownMenu.classList.contains('hidden');
 
                   if (isHidden) {
                       dropdownMenu.classList.remove('hidden');
-                      dropdownMenu.classList.add('opacity-100', 'scale-100');
-                      dropdownMenu.classList.remove('opacity-0', 'scale-95');
                       chevron.classList.add('rotate-180');
                   } else {
                       dropdownMenu.classList.add('hidden');
-                      dropdownMenu.classList.remove('opacity-100', 'scale-100');
-                      dropdownMenu.classList.add('opacity-0', 'scale-95');
                       chevron.classList.remove('rotate-180');
                   }
               }
@@ -67,17 +70,19 @@
                   toggleDropdown();
               });
 
-              logoutBtn.addEventListener('click', function(e) {
-                  e.preventDefault();
-                  e.stopPropagation();
+              if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
 
-                  if (confirm('Are you sure you want to sign out?')) {
-                      logoutForm.submit();
-                  }
-              });
+                    if (confirm('Are you sure you want to sign out?')) {
+                        logoutForm.submit();
+                    }
+                });
+              }
 
               document.addEventListener('click', function(e) {
-                  if (!container.contains(e.target) && !dropdownMenu.classList.contains('hidden')) {
+                  if (container && !container.contains(e.target) && !dropdownMenu.classList.contains('hidden')) {
                       toggleDropdown();
                   }
               });

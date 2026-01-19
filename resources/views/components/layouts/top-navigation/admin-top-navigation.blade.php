@@ -4,7 +4,7 @@
         <div class="flex justify-between h-16">
             <!-- Logo & Menu -->
             <div class="flex items-center gap-8">
-                <a href="{{ route('dashboard') }}" class="shrink-0 flex items-center gap-3">
+                <a href="{{ route('admin.dashboard') }}" class="shrink-0 flex items-center gap-3">
                     <div class="w-8 h-8 bg-white rounded flex items-center justify-center">
                         <span class="text-blue-900 font-bold text-lg">A</span>
                     </div>
